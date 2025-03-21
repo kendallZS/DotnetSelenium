@@ -4,7 +4,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace DotnetSelenium
 {
-    public class Tests
+    public class Tests5
     {
         [SetUp]
         public void Setup()
@@ -14,7 +14,7 @@ namespace DotnetSelenium
         [Test]
         public void Test1()
         {
-            // CASO DE PRUEBA 006: Clic en el Slider.
+            // CASO DE PRUEBA 005: Clic en la categoría.
             // Crear la instancia de Selenium Web Driver
             IWebDriver driver = new ChromeDriver();
             // Navegar a la url del sitio de pruebas
@@ -22,16 +22,16 @@ namespace DotnetSelenium
             // Maximizar la ventana del navegador
             driver.Manage().Window.Maximize();
 
-            // Esperar hasta que el botón de navegación del slider esté disponible
+            // Esperar hasta que el botón "Laptops" esté disponible
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            IWebElement sliderNextButton = wait.Until(drv =>
+            IWebElement categoryLaptops = wait.Until(drv =>
             {
-                var element = drv.FindElement(By.ClassName("carousel-control-next-icon"));
+                var element = drv.FindElement(By.XPath("//a[contains(text(), 'Laptops')]"));
                 return element.Displayed && element.Enabled ? element : null;
             });
 
-            // Hacer clic en el botón de navegación del slider
-            sliderNextButton.Click();
+            // Hacer clic en la categoría "Laptops"
+            categoryLaptops.Click();
         }
     }
 }
